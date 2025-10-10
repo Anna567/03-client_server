@@ -14,12 +14,12 @@ app.use(express.json());
 // Routen
 app.use("/api", helloRoutes); 
 app.get("/", (req, res) => {
-  res.send("🚀 Server läuft! Willkommen bei meinem TypeScript-Projekt");
+  res.send("Server läuft! Willkommen beim Projekt '03-client_server'");
 });
 
 // Server starten
 app.listen(PORT, () => {
-    console.log(`🚀 Server läuft auf http://localhost:${PORT}`);
+    console.log(`Server läuft auf http://localhost:${PORT}`);
   });
 
 
