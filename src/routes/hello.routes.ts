@@ -17,6 +17,15 @@ router.post("/login", (req: Request, res: Response): void => {
 });
 //  any-Misuse --Ende
 
+// --- Type-Assertion Fehler ---
+router.post("/login-assert", (req: Request, res: Response) => {
+  const body = req.body as { user: { roles: any } };   
+  const roles = (body.user.roles as string[]);  // Double Assertion
+  const lower = roles.map(r => r.toLowerCase());  // crasht, wenn string ist
+  res.json({ roles: lower });
+});
+// --- Ende Assertion-Fehler ---
+
 router.get("/hello", helloWorld);
 
 export default router;
