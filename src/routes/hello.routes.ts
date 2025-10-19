@@ -26,6 +26,16 @@ router.post("/login-assert", (req: Request, res: Response) => {
 });
 // --- Ende Assertion-Fehler ---
 
+
+//Zugriff auf (potenziell) nichtexistirenden Index
+router.get("/demo/arr-oob", (req: Request, res: Response): void => {
+  const roles = ["Admin", "Editor"];              
+  const i = Number(req.query.i ?? 0);             // keine Validierung 
+  const roleLower = roles[i].toLowerCase();       // 
+  res.json({ ok: true, i, role: roleLower });
+});
+//Zugriff auf (potenziell) nichtexistirenden Index --Ende
+
 router.get("/hello", helloWorld);
 
 export default router;
